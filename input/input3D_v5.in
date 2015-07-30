@@ -1,0 +1,21 @@
+###########
+# Experimento del libro mcml
+##########
+
+3D																	# Simulation Type: 2D, 3D
+output/data3d_vmod.out	A												# output file name, ASCII / BINARY
+
+3																	# Number of bodys including Universe Body. Must be entered in pre order
+
+0	0	0	glass	1	1											# Material:  ma,ms,g,name, sensitive (0 or 1), refractive_index
+box	universe	1	0	0	0.2	1001	1001	1000					# Geometry: type, name, N children, center(x,y,z), size(width, height, depth)
+
+1	10	0.0	layer2	1	1.37
+box	box2	1	0	0	0.1	1000	1000	0.2
+
+1	100	0.9	layer3	1	1.37
+box	box3	0	0	0	0.05	1000	1000	0.1
+
+1																	# Number of sources
+10000																# Number of particles
+box	source1	0	0	0.000001	0.00001	0.00001	0.00001	0	0	1	0	# (geometry name) (position:x,y,z) (Width, height, depth) (direction?:x,y,z) angularAperture? 0.08rad==4.5deg

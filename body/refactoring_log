@@ -1,0 +1,51 @@
+Software Process Management
+
+Function Point Analysis (FPA)
+COCOMO (Cost Constructive Model)
+
+Waterfall model
+
+1. Concept Definition Phase [13]
+	Feasibility Analysis/ Problem Concept Exploration
+	Requirements’ Definition
+2. Requirements Elicitation & Specification Phase
+	Requirements Analysis
+	Requirements’ Specification
+3. User Design Phase
+	Requirements’ Definition’
+	Structural Analysis of SRS (Software Requirements Specification)
+	Structured Design/ Software Architecture Design
+	Detailed Design (System Design)
+4. Implementation (Coding & Unit Testing) Phase
+	Implementation Process
+	Unit Testing Process
+5. System Testing phase
+	System Integration and System Testing
+6. Operations & Maintenance Phase
+	Deploying the system
+	Maintaining the deployed system	
+7. Retirement/ Replacement Phase
+	Retirement process
+
+Books
+Process Improvement. In: ‘Applied Software Project Management
+Encyclopedia of Software Engineering, 2nd Edition
+Essence of Waterfall Model
+Fundamentals of Software Engineering
+
+
+
+-----
+
+The architectural view of a software development cycle is centered on the design of the application or system and how the design drives the development. Basically, there are five phases of architecting are as follow: 1. Predesign phase 2. Analysis phase 3. Schematic design phase 4. Design development phase 5. Building phase
+
+
+different interests can be explained and analyze using the following established views: 1. Management 2. Software Engineering. 3. Engineering design
+
+
+The methods have this early focus because they are architecture-centric techniques, and architecture is the blueprint for a system
+
+Once a project is in implementation, testing, deployment, or maintenance phase, the architecture has been largely decided on, either explicitly or implicitly
+
+Integrating the Architecture Tradeoff Analysis Method (ATAM)
+Cost Benefit Analysis Method (CBAM)

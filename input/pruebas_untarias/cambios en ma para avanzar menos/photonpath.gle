@@ -1,0 +1,59 @@
+size 10 10
+
+set lwidth 0.04 hei 0.5 just CC font psh arrowsize 0.3
+
+set texlabels 1
+
+
+amove 5 5
+circle 4 fill grey5
+t=1
+amove 0 0
+begin origin
+!set color yellow
+oldid = 0
+fopen "myoutput_a40_0.txt" f1 read
+until feof(f1)
+     fread f1 a b c d e f g h i
+     if a = 1 then
+          set color yellow
+     end if
+     if a = 2 then
+          set color blue
+     end if
+     if a = 3 then
+          set color orange
+     end if
+     if a = 4 then
+          set color magenta
+     end if
+     if a = 5 then
+          set color red
+     end if
+     if a = 6 then
+          set color green
+     end if
+     if a = 7 then
+          set color lightblue
+     end if
+     if a = oldid then
+!          if t > 1 then
+               aline 10*b 10*c
+!          else
+!               amove 10*b 10*c
+!          end if
+     else
+          amove 10*b 10*c
+          oldid = a
+     end if
+     t=t+1
+     circle 0.06 
+next
+fclose f1
+end origin
+
+amove 5 6.5
+begin origin
+amove 0 3
+text \mu_a=40.0
+end origin

@@ -1,0 +1,31 @@
+###########
+#Template of input file for Monte Carlo simulation 
+##########
+
+input/data.out	A										##output file name, ASCII / BINARY
+
+5														##Number of bodys including Universe Body. Must be entered in pre order
+
+0.0	0.0	0.0	glass	0										##Material:  ma,ms,g,name, sensitive (0 or 1)
+rectangle	rectangle_mother	1	0.0	0.0	1	1			#Geometry: name (rectangle,circumference,triangle), name_geometry, number_childres . To rectangle: vertexX,vertexY,width,height
+
+1.0	100	0.999	Tissue1	1
+circumference	circumference_1	2	0.5	0.5	0.45		#To geometry circumference: vertexX,vertexY,radius
+
+1.0	10.0	0.999	Tissue2	1
+circumference	circumference_2	1	0.5	0.25	0.12
+
+1.0	100	0.999	Tissue1	1
+rectangle	rectangle_1	0	0.5	0.25	0.05	0.05
+
+2.0	10	0.999	Tissue3	1
+rectangle	rectangle_2	0	0.5	0.5	0.20	0.20
+
+2														##Number of sources
+
+10														##Number of particles
+circumference	source_1	0.55	0.6	0.05    #geometry
+
+5
+rectangle	source_2	0.3	0.4	0.05	0.05
+

@@ -1,0 +1,56 @@
+###########
+# Experimento del libro mcml
+##########
+
+3D																# Simulation Type: 2D, 3D
+output/data3d_vmod.out	A										# output file name, ASCII / BINARY
+
+4																# Number of bodys including Universe Body. Must be entered in pre order
+
+#	0	0	0	glass	1	1										# Material:  ma,ms,g,name, sensitive (0 or 1), refractive_index
+#	box	universe	1	0	0	0.2	1001	1001	1000			# Geometry: type, name, N children, center(x,y,z), size(width, height, depth)
+
+#	2	10	0.7	layer1	1	1.37
+#	box	box1	1	0	0	0.2	1000	1000	0.4
+
+#	1	10	0.0	layer2	1	1.37
+#	box	box2	1	0	0	0.1	1000	1000	0.2
+
+#	1	100	0.9	layer3	1	1.37
+#	box	box3	0	0	0	0.05	1000	1000	0.1
+
+
+0.2	1000	0.9	layer1	1	1.53
+box	box1	1	0	0	0.00	1000	1000	0.002
+
+mua	mus	0.85	layer2	1	1.34
+box	box2	1	0	0	0.00	1000	1000	0.008
+
+mua	mus	0.8	layer3	1	1.4
+box	box3	1	0	0	0.00	1000	1000	0.01
+
+mua	mus	0.9	layer4	1	1.39
+box	box4	1	0	0	0.00	1000	1000	0.008
+
+mua	mus	0.76	layer5	1	1.4
+box	box5	1	0	0	0.00	1000	1000	0.162
+
+mua	mus	0.95	layer6	1	1.39
+box	box6	1	0	0	0.00	1000	1000	0.02
+
+mua	mus	0.8	layer7	1	1.44
+box	box7	0	0	0	0.00	1000	1000	0.59
+
+
+# # n	mua		mus		g		d		# One line for each layer
+# 1.53	0.2		1000	0.9		0.002	# layer 1: stratum corneum
+# 1.34	0.15	400		0.85	0.008	# layer 2: living epidermis
+# 1.4	0.7		300		0.8		0.01	# layer 3: papillary dermis
+# 1.39	1		350		0.9		0.008	# layer 4: upper blood net dermis
+# 1.4	0.7		200		0.76	0.162	# layer 5: dermis
+# 1.39	1		350		0.95	0.02	# layer 6: deep blood net dermis
+# 1.44	0.3		150		0.8		0.59	# layer 7: subcutaneous fat
+
+1																	# Number of sources
+1000																# Number of particles
+box	source1	0	0	0.08	0.00001	0.00001	0.00001	0	0	1	0	# (geometry name) (position:x,y,z) (Width, height, depth) (direction?:x,y,z) angularAperture? 0.08rad==4.5deg

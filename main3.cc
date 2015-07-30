@@ -1,0 +1,204 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include "body/MaterialProperties.hh"
+#include "body/BodyHandler.hh"
+#include "body/Body.hh"
+#include "body/Geometry.hh"
+#include "body/figure/Rectangle.hh"
+#include "body/figure/Circumference.hh"
+#include "body/CustomBodyHandler.hh"
+#include "utils/GeometryAlgorithms.hh"
+#include "utils/Random.hh"
+
+#define NUMBER_PROCESSORS 2
+
+using namespace std;
+
+#ifdef UC_PLUSPLUS
+void uMain::main() {
+#else
+int main3(int argc, char *argv[]) {
+#endif
+
+	/*MaterialProperties * materialProperties = new MaterialProperties();
+	materialProperties->addProperty("absorption_coefficient", 0.0);
+	materialProperties->addProperty("scattering_coefficient", 0.0);
+	materialProperties->addProperty("anisotropy", 0.0);
+
+	//aire
+	Material * air = new Material();
+	air->setName("Aire");
+	air->setMaterialProperties(materialProperties);
+
+	Point2D * v = new Point2D(0.0, 0.0);
+	Rectangle * rectangle = new Rectangle("rectangle mother", v, 10, 10);
+	srand(time(NULL));
+
+	Body * body = new Body(rectangle, air, 1);
+	int number_childrens = 1;
+	CustomBodyHandler * cbh = new CustomBodyHandler(body, number_childrens);
+
+	v = new Point2D(5.0, 5.0);
+	Circumference * cirumference = new Circumference("circumference 1", v, 4.5);
+
+	materialProperties = new MaterialProperties();
+	materialProperties->addProperty("absorption_coefficient", 1.0);
+	materialProperties->addProperty("scattering_coefficient", 100.0);
+	materialProperties->addProperty("anisotropy", 0.9);
+	Material * tissue = new Material();
+	tissue->setName("tissue 1");
+	tissue->setMaterialProperties(materialProperties);
+
+	body = new Body(cirumference, tissue, 2);
+	cbh->addBody(body, 2);
+
+	Point2D * aa = new Point2D(1.33457, 1.03457);
+	if (cirumference->insideGeometry(aa))
+		cout << "esta dentro" << endl;
+	else
+		cout << "no esta adentro" << endl;
+
+	v = new Point2D(5.0, 2.5);
+
+	materialProperties = new MaterialProperties();
+	materialProperties->addProperty("absorption_coefficient", 1.0);
+	materialProperties->addProperty("scattering_coefficient", 10.0);
+	materialProperties->addProperty("anisotropy", 0.0);
+	tissue = new Material();
+	tissue->setName("tissue 2");
+	tissue->setMaterialProperties(materialProperties);
+	cirumference = new Circumference("Circumference 2", v, 1.2);
+	body = new Body(cirumference, tissue, 3);
+	cbh->addBody(body, 1);
+
+	materialProperties = new MaterialProperties();
+	materialProperties->addProperty("absorption_coefficient", 1.0);
+	materialProperties->addProperty("scattering_coefficient", 100.0);
+	materialProperties->addProperty("anisotropy", 0.9);
+	tissue = new Material();
+	tissue->setName("tissue 1");
+
+	v = new Point2D(5.0, 2.5);
+	rectangle = new Rectangle("rectangle 2", v, 0.5, 0.5);
+	body = new Body(rectangle, tissue, 4);
+	cbh->addBody(body, 0);
+
+	materialProperties = new MaterialProperties();
+	materialProperties->addProperty("absorption_coefficient", 2.0);
+	materialProperties->addProperty("scattering_coefficient", 10.0);
+	materialProperties->addProperty("anisotropy", 0.7);
+	tissue = new Material();
+	tissue->setName("tissue 3");
+
+	v = new Point2D(5.0, 5.0);
+	rectangle = new Rectangle("rectangle 3", v, 2.0, 2.0);
+	body = new Body(rectangle, tissue, 5);
+	cbh->addBody(body, 0);
+
+	cbh->setUniverseAsCurrentBody();
+	cbh->showTree(cbh->getUniverseBody());
+
+	cbh->setUniverseAsCurrentBody();
+	cbh->showTree(cbh->getUniverseBody());
+
+	cbh->setUniverseAsCurrentBody();
+	v = new Point2D(1, 1);
+	body = cbh->getBody(v);
+	if (body != NULL)
+		cout << "Para el vector (" << v->getX() << "," << v->getY()
+				<< ") el body es: " << body->getID() << endl;
+	else
+		cout << "not found !" << endl;
+
+	cbh->setUniverseAsCurrentBody();
+	v = new Point2D(5.1, 5.1);
+	body = cbh->getBody(v);
+	if (body != NULL)
+		cout << "Para el vector (" << v->getX() << "," << v->getY()
+				<< ") el body es: " << body->getID() << endl;
+	else
+		cout << "not found !" << endl;
+
+	cbh->setUniverseAsCurrentBody();
+	v = new Point2D(5.0, 2.4);
+	body = cbh->getBody(v);
+	if (body != NULL)
+		cout << "Para el vector (" << v->getX() << "," << v->getY()
+				<< ") el body es: " << body->getID() << endl;
+	else
+		cout << "not found !" << endl;
+
+	cbh->setUniverseAsCurrentBody();
+	v = new Point2D(1, 1);
+	body = cbh->getBody(v);
+	if (body != NULL)
+		cout << "Para el vector (" << v->getX() << "," << v->getY()
+				<< ") el body es: " << body->getID() << endl;
+	else
+		cout << "not found !" << endl;
+
+	cbh->setUniverseAsCurrentBody();
+	v = new Point2D(5.1, 2.6);
+	body = cbh->getBody(v);
+	if (body != NULL)
+		cout << "Para el vector (" << v->getX() << "," << v->getY()
+				<< ") el body es: " << body->getID() << endl;
+	else
+		cout << "not found !" << endl;
+
+	cbh->setUniverseAsCurrentBody();
+	v = new Point2D(5.7, 6.0);
+	body = cbh->getBody(v);
+	if (body != NULL)
+		cout << "Para el vector (" << v->getX() << "," << v->getY()
+				<< ") el body es: " << body->getID() << endl;
+	else
+		cout << "not found !" << endl;
+
+	cbh->setUniverseAsCurrentBody();
+	v = new Point2D(1.0, 1.2);
+	body = cbh->getBody(v);
+	if (body != NULL)
+		cout << "Para el vector (" << v->getX() << "," << v->getY()
+				<< ") el body es: " << body->getID() << endl;
+	else
+		cout << "not found !" << endl;
+
+	cbh->setUniverseAsCurrentBody();
+	v = new Point2D(4.3, 4.0);
+	body = cbh->getBody(v);
+	if (body != NULL)
+		cout << "Para el vector (" << v->getX() << "," << v->getY()
+				<< ") el body es: " << body->getID() << endl;
+	else
+		cout << "not found !" << endl;
+
+	cbh->setUniverseAsCurrentBody();
+	v = new Point2D(5.7, 6.0);
+	body = cbh->getBody(v);
+	if (body != NULL)
+		cout << "Para el vector (" << v->getX() << "," << v->getY()
+				<< ") el body es: " << body->getID() << endl;
+	else
+		cout << "not found !" << endl;
+
+	cbh->setUniverseAsCurrentBody();
+	v = new Point2D(5.0, 2.4);
+	body = cbh->getBody(v);
+	if (body != NULL)
+		cout << "Para el vector (" << v->getX() << "," << v->getY()
+				<< ") el body es: " << body->getID() << endl;
+	else
+		cout << "not found !" << endl;
+
+	cbh->setUniverseAsCurrentBody();
+	v = new Point2D(4.3, 4.0);
+	body = cbh->getBody(v);
+	if (body != NULL)
+		cout << "Para el vector (" << v->getX() << "," << v->getY()
+				<< ") el body es: " << body->getID() << endl;
+	else
+		cout << "not found !" << endl;*/
+
+}
